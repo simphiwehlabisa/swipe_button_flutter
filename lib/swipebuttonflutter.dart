@@ -24,7 +24,7 @@ class SwipingButton extends StatefulWidget {
 
   /// The decimal percentage of swiping in order for the callbacks to get called, defaults to 0.75 (75%) of the total width of the children.
   final double? swipePercentageNeeded;
-
+Color? textColor;
   SwipingButton({
     Key? key,
     required this.text,
@@ -36,6 +36,8 @@ class SwipingButton extends StatefulWidget {
     this.iconColor = Colors.white,
     this.buttonTextStyle,
     this.swipePercentageNeeded,
+    
+    this.textColor,
   }) : super(key: key);
 
   @override
@@ -47,7 +49,10 @@ class SwipingButton extends StatefulWidget {
       swipeButtonColor: this.swipeButtonColor,
       backgroundColor: this.backgroundColor,
       iconColor: this.iconColor,
-      buttonTextStyle: this.buttonTextStyle);
+      buttonTextStyle: this.buttonTextStyle,
+  
+        textColor: this.textColor,
+  );
 }
 
 class StateSwipingButton extends State<SwipingButton> {
