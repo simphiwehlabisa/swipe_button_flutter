@@ -64,6 +64,7 @@ class StateSwipingButton extends State<SwipingButton> {
   final Color iconColor;
   TextStyle? buttonTextStyle;
   final EdgeInsets padding;
+  Color? textColor;
 
   StateSwipingButton({
     Key? key,
@@ -75,6 +76,7 @@ class StateSwipingButton extends State<SwipingButton> {
     this.backgroundColor = Colors.black,
     this.iconColor = Colors.white,
     this.buttonTextStyle,
+    this.textColor,
   });
 
   @override
@@ -82,6 +84,9 @@ class StateSwipingButton extends State<SwipingButton> {
     if (buttonTextStyle == null) {
       buttonTextStyle = TextStyle(
           fontSize: 16.0, fontWeight: FontWeight.w800, color: Colors.white);
+    }
+    if(textColor == null){
+    textColor = Colors.white;
     }
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -99,7 +104,7 @@ class StateSwipingButton extends State<SwipingButton> {
                 style: TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.w800,
-                    color: Colors.white),
+                    color:textColor),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
