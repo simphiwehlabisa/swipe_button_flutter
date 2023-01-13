@@ -12,6 +12,9 @@ class SwipingButton extends StatefulWidget {
   /// with of the button
   final double height;
 
+  final bool resetState;
+
+
   /// The callback invoked when the button is swiped.
   final VoidCallback onSwipeCallback;
 
@@ -29,6 +32,7 @@ Color? textColor;
     Key? key,
     required this.text,
     this.height = 80,
+    this.resetState = false,
     required this.onSwipeCallback,
     this.swipeButtonColor = Colors.amber,
     this.backgroundColor = Colors.black,
@@ -45,6 +49,7 @@ Color? textColor;
       text: text,
       onSwipeCallback: onSwipeCallback,
       height: height,
+      resetState: resetState,
       padding: this.padding,
       swipeButtonColor: this.swipeButtonColor,
       backgroundColor: this.backgroundColor,
@@ -59,6 +64,8 @@ class StateSwipingButton extends State<SwipingButton> {
   /// The text that the button will display.
   final String text;
   final double height;
+  final bool resetState;
+
 
   /// The callback invoked when the button is swiped.
   final VoidCallback onSwipeCallback;
@@ -75,6 +82,7 @@ class StateSwipingButton extends State<SwipingButton> {
     Key? key,
     required this.text,
     required this.height,
+    required this.resetState,
     required this.onSwipeCallback,
     this.padding = const EdgeInsets.fromLTRB(0, 0, 0, 0),
     this.swipeButtonColor = Colors.amber,
@@ -117,6 +125,7 @@ class StateSwipingButton extends State<SwipingButton> {
           ),
           SwipeableWidget(
             height: height,
+            resetState: resetState,
             swipePercentageNeeded: widget.swipePercentageNeeded == null
                 ? 0.75
                 : widget.swipePercentageNeeded,

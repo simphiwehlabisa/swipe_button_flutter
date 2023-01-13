@@ -9,6 +9,8 @@ class SwipeableWidget extends StatefulWidget {
   /// The Height of the widget that will be drawn, required.
   final double height;
 
+  final bool resetState;
+
   /// The `VoidCallback` that will be called once a swipe with certain percentage is detected.
   final VoidCallback onSwipeCallback;
 
@@ -23,6 +25,7 @@ class SwipeableWidget extends StatefulWidget {
       {Key? key,
       required this.child,
       required this.height,
+      required this.resetState,
       required this.onSwipeCallback,
       required this.onSwipeStartcallback,
       required this.screenSize,
@@ -109,6 +112,12 @@ class _SwipeableWidgetState extends State<SwipeableWidget>
                 duration: Duration(milliseconds: 300),
                 curve: Curves.fastOutSlowIn);
             widget.onSwipeCallback();
+
+            if(widget.resetState){
+               _controller.animateTo(_initControllerVal,
+                duration: Duration(milliseconds: 300),
+                curve: Curves.fastOutSlowIn);
+            }
           } else {
             // if it's not enough, then animate it back to its full width
             _controller.animateTo(_initControllerVal,
